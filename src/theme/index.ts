@@ -1,14 +1,14 @@
 import { createTheme } from '@mui/material/styles';
 
 /**
- * Default theme configuration for the application
- * This theme is used across all pages via ThemeProvider in layout components
+ * Default theme configuration for the application.
+ * Provided to the tree by `ThemeProvider` in `App.tsx`.
  *
  * Key customizations:
  * - Primary color: Blue (#1976d2)
  * - Secondary color: Purple (#9c27b0)
- * - Background: Light gray (#fafafa) for better contrast
- * - Typography: Roboto font family with responsive scaling
+ * - Background: Light gray for better contrast
+ * - Typography: Inter (self-hosted via @fontsource/inter, loaded in main.tsx)
  * - Shape: 8px border radius for consistent rounded corners
  */
 export const defaultTheme = createTheme({
@@ -49,7 +49,7 @@ export const defaultTheme = createTheme({
     },
   },
   typography: {
-    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+    fontFamily: '"Inter", "Helvetica", "Arial", sans-serif',
     fontSize: 14,
     fontWeightLight: 300,
     fontWeightRegular: 400,

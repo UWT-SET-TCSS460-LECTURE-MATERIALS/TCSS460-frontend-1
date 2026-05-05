@@ -5,7 +5,7 @@ import { APP_CONFIG } from '@/config';
 
 import HomeIcon from '@mui/icons-material/Home';
 
-export default function Error404() {
+export default function NotFound() {
   return (
     <Container maxWidth="sm">
       <Box
@@ -41,19 +41,16 @@ export default function Error404() {
           The page you're looking for doesn't exist or has been moved.
         </Typography>
 
-        <Link
+        <Button
+          component={Link}
           to={APP_CONFIG.routes.home}
-          style={{ textDecoration: 'none' }}
+          variant="contained"
+          size="large"
+          startIcon={<HomeIcon />}
+          sx={{ bgcolor: 'secondary.dark' }}
         >
-          <Button
-            variant="contained"
-            size="large"
-            startIcon={<HomeIcon />}
-            sx={{ bgcolor: 'secondary.dark' }}
-          >
-            Return Home
-          </Button>
-        </Link>
+          Return Home
+        </Button>
 
         <Typography
           variant="body2"

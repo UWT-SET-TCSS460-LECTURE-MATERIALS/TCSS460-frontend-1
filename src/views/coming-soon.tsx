@@ -1,9 +1,6 @@
-// material-ui
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-
-// ==============================|| PAGE ||============================== //
 
 export default function ComingSoon() {
   return (
@@ -22,7 +19,7 @@ export default function ComingSoon() {
           alignItems="center"
         >
           <img
-            src="/assets/images/maintenance/under-construction.svg"
+            src="/assets/images/under-construction.svg"
             alt="Under Construction"
             width={400}
             height={300}

@@ -1,4 +1,4 @@
-import { Priority } from './priority.types';
+import type { Priority } from './priority';
 
 export interface Message {
   id: number;

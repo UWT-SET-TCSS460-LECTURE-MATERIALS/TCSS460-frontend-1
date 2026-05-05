@@ -10,7 +10,7 @@ export const APP_CONFIG = {
   course: {
     code: 'TCSS 460',
     name: 'Client Server Programming for the Web',
-    semester: 'Fall 2025',
+    semester: 'Spring 2026',
     university: 'UW Tacoma',
     school: 'School of Engineering and Technology',
   },
@@ -19,8 +19,8 @@ export const APP_CONFIG = {
    * Application metadata
    */
   app: {
-    title: 'TCSS 460 Demo',
-    description: 'React State | Next.js Patterns and Examples',
+    title: 'TCSS 460 Demo 1',
+    description: 'React fundamentals — state, components, and client-side routing',
   },
 
   /**

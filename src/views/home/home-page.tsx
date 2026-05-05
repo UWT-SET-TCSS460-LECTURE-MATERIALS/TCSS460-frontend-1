@@ -32,7 +32,7 @@ export default function HomePage() {
           component="h1"
           gutterBottom
         >
-          First Next.js Example
+          {APP_CONFIG.app.title}
         </Typography>
         <Typography
           variant="h5"
@@ -47,35 +47,29 @@ export default function HomePage() {
           direction="column"
           sx={{ width: '100%', maxWidth: 300 }}
         >
-          <Link
+          <Button
+            component={Link}
             to={APP_CONFIG.routes.state}
-            style={{ textDecoration: 'none' }}
+            variant="contained"
+            fullWidth
+            size="large"
+            startIcon={<MemoryIcon />}
+            sx={{ bgcolor: 'secondary.dark' }}
           >
-            <Button
-              variant="contained"
-              fullWidth
-              size="large"
-              startIcon={<MemoryIcon />}
-              sx={{ bgcolor: 'secondary.dark' }}
-            >
-              State Demo
-            </Button>
-          </Link>
+            State Demo
+          </Button>
 
-          <Link
+          <Button
+            component={Link}
             to={APP_CONFIG.routes.messagesView}
-            style={{ textDecoration: 'none' }}
+            variant="contained"
+            fullWidth
+            size="large"
+            startIcon={<EmailIcon />}
+            color="primary"
           >
-            <Button
-              variant="contained"
-              fullWidth
-              size="large"
-              startIcon={<EmailIcon />}
-              color="primary"
-            >
-              Messages Demo
-            </Button>
-          </Link>
+            Messages Demo
+          </Button>
         </Stack>
 
         <Typography

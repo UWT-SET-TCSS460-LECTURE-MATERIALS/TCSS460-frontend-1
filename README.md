@@ -46,43 +46,45 @@ Open <http://localhost:5173>.
 
 ```
 src/
-├── main.tsx                 # Vite entry — mounts <App/>
+├── main.tsx                 # Vite entry — mounts <App/>, loads Inter font CSS
 ├── App.tsx                  # ThemeProvider + BrowserRouter + route table
 ├── components/              # Reusable presentational components
+│   ├── demo-shell.tsx       # AppBar wrapper — wraps /state and /messages/* routes
 │   ├── logo.tsx             # SVG logo with 4 variants
 │   ├── message-list-item.tsx
 │   ├── priority-avatar.tsx
 │   └── priority-selector.tsx
-├── layouts/
-│   └── demo-layout.tsx      # AppBar shell — wraps /state and /messages/* routes
 ├── views/                   # Page-level components (one per route)
 │   ├── home/home-page.tsx
 │   ├── state/state.tsx
-│   ├── messages/{message-list,message-send}.tsx
-│   └── maintenance/{404,coming-soon}.tsx
+│   ├── messages/
+│   │   ├── message-list.tsx
+│   │   ├── message-send.tsx
+│   │   └── mock-data.ts     # Seeded mock messages (colocated)
+│   ├── coming-soon.tsx      # Placeholder used for /messages/send
+│   └── not-found.tsx        # 404 catch-all
 ├── theme/index.ts           # MUI theme — single source of truth
 ├── types/                   # TypeScript types (Message, Priority)
-├── config/index.ts          # APP_CONFIG (course info, routes)
-└── utils/mock/data.ts       # Seeded mock messages
+└── config/index.ts          # APP_CONFIG (course info, routes)
 ```
 
 ## Routes
 
-| Path             | Component     | Layout                |
-| ---------------- | ------------- | --------------------- |
-| `/`              | `HomePage`    | none (full-screen)    |
-| `/state`         | `State`       | `DemoLayout` (AppBar) |
-| `/messages/view` | `MessageList` | `DemoLayout`          |
-| `/messages/send` | `ComingSoon`  | `DemoLayout`          |
-| `*`              | `Error404`    | none                  |
+| Path             | Component     | Shell                |
+| ---------------- | ------------- | -------------------- |
+| `/`              | `HomePage`    | none (full-screen)   |
+| `/state`         | `State`       | `DemoShell` (AppBar) |
+| `/messages/view` | `MessageList` | `DemoShell`          |
+| `/messages/send` | `ComingSoon`  | `DemoShell`          |
+| `*`              | `NotFound`    | none                 |
 
-Routes under `DemoLayout` share an AppBar via React Router's nested-route + `<Outlet/>` pattern.
+Routes under `DemoShell` share an AppBar via React Router's nested-route + `<Outlet/>` pattern.
 
 ## Demos
 
 ### State Management (`/state`)
 
-A simple counter card. Demonstrates `useState`, render lifecycle, and event handling. **Note**: this file intentionally retains some incorrect-pattern remnants (commented-out `useReducer` force-update, mutable `let c = 0`) used during lecture to teach what _not_ to do.
+A simple counter card. **Note**: `state.tsx` is intentionally a copy of `.state.incorrect.tsx` — it actively uses the wrong patterns (`let c = 0`, `useReducer`-as-forceUpdate) so lecture can demonstrate why they fail. The corrected version using `useState` lives alongside in `.state.correct.tsx`.
 
 ### Messages (`/messages/view`)
 

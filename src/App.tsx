@@ -4,11 +4,11 @@ import CssBaseline from '@mui/material/CssBaseline';
 
 import { defaultTheme } from '@/theme';
 import HomePage from '@/views/home/home-page';
-import DemoLayout from '@/layouts/demo-layout';
+import DemoShell from '@/components/demo-shell';
 import State from '@/views/state/state';
 import MessageList from '@/views/messages/message-list';
-import ComingSoon from '@/views/maintenance/coming-soon';
-import Error404 from '@/views/maintenance/404';
+import ComingSoon from '@/views/coming-soon';
+import NotFound from '@/views/not-found';
 
 export default function App() {
   return (
@@ -20,7 +20,7 @@ export default function App() {
             path="/"
             element={<HomePage />}
           />
-          <Route element={<DemoLayout />}>
+          <Route element={<DemoShell />}>
             <Route
               path="/state"
               element={<State />}
@@ -36,7 +36,7 @@ export default function App() {
           </Route>
           <Route
             path="*"
-            element={<Error404 />}
+            element={<NotFound />}
           />
         </Routes>
       </BrowserRouter>

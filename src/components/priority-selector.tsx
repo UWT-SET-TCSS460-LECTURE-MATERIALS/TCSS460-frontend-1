@@ -1,6 +1,7 @@
+import type { MouseEvent } from 'react';
 import { Stack, ToggleButton, ToggleButtonGroup } from '@mui/material';
 
-import { Priority, PRIORITY_LEVELS } from '@/types/priority.types';
+import { PRIORITY_LEVELS, type Priority } from '@/types/priority';
 import PriorityAvatar from './priority-avatar';
 
 /**
@@ -8,15 +9,16 @@ import PriorityAvatar from './priority-avatar';
  */
 interface PrioritySelectorProps {
   /**
-   * Currently selected priority value
-   * Use 0 to indicate "show all" or no selection
+   * Currently selected priority value, or null for "show all" / no selection
+   * (matches MUI's exclusive ToggleButtonGroup deselect behavior).
    */
-  initialValue: Priority | 0;
+  initialValue: Priority | null;
 
   /**
    * Callback fired when a priority toggle button is clicked
    * @param event - The mouse event from the Material-UI ToggleButton
-   * @param newPriority - The newly selected priority level (1, 2, or 3)
+   * @param newPriority - The newly selected priority level, or null when the user
+   *   clicks the currently-selected button (MUI's exclusive-deselect behavior)
    * @example
    * ```tsx
    * const handleClick = (event, priority) => {
@@ -24,7 +26,7 @@ interface PrioritySelectorProps {
    * };
    * ```
    */
-  onClick: (event: React.MouseEvent<HTMLElement>, newPriority: number) => void;
+  onClick: (event: MouseEvent<HTMLElement>, newPriority: Priority | null) => void;
 }
 
 /**

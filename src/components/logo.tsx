@@ -1,5 +1,4 @@
-import React from 'react';
-import { SxProps, Theme } from '@mui/material/styles';
+import { SxProps, Theme, useTheme } from '@mui/material/styles';
 import { Box } from '@mui/material';
 
 export type LogoVariant = 'full' | 'small' | 'icon' | 'monochrome';
@@ -38,8 +37,9 @@ interface LogoProps {
  * - Radiating Pattern: Illustrates how state changes propagate through the application
  */
 export default function Logo({ variant = 'full', width, height, sx }: LogoProps) {
-  const purple = '#9c27b0';
-  const blue = '#1976d2';
+  const theme = useTheme();
+  const purple = theme.palette.secondary.main;
+  const blue = theme.palette.primary.main;
 
   // Render different variants based on the variant prop
   const renderFullLogo = () => (

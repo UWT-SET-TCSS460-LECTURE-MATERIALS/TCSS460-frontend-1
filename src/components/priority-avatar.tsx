@@ -1,4 +1,4 @@
-import { Priority } from '@/types/priority.types';
+import { PRIORITY, type Priority } from '@/types/priority';
 import Avatar from '@mui/material/Avatar';
 import { yellow, red, green, grey } from '@mui/material/colors';
 
@@ -10,11 +10,11 @@ import { yellow, red, green, grey } from '@mui/material/colors';
  */
 function getPriorityColor(priority: Priority): string {
   switch (priority) {
-    case Priority.LOW:
+    case PRIORITY.LOW:
       return green[800];
-    case Priority.MEDIUM:
+    case PRIORITY.MEDIUM:
       return yellow[800];
-    case Priority.HIGH:
+    case PRIORITY.HIGH:
       return red[800];
     default: {
       // This helps catch missing cases at compile time!
@@ -31,9 +31,9 @@ function getPriorityColor(priority: Priority): string {
 interface PriorityAvatarProps {
   /**
    * Priority level determining the avatar's background color
-   * - Priority.LOW (1): Green (#2e7d32)
-   * - Priority.MEDIUM (2): Yellow (#f9a825)
-   * - Priority.HIGH (3): Red (#c62828)
+   * - PRIORITY.LOW (1): Green (#2e7d32)
+   * - PRIORITY.MEDIUM (2): Yellow (#f9a825)
+   * - PRIORITY.HIGH (3): Red (#c62828)
    * - Unknown values: Grey (fallback)
    */
   priority: Priority;
@@ -44,7 +44,7 @@ interface PriorityAvatarProps {
  * Color automatically changes based on priority level for visual distinction
  * @example
  * ```tsx
- * <PriorityAvatar priority={Priority.HIGH} />
+ * <PriorityAvatar priority={PRIORITY.HIGH} />
  * ```
  */
 export default function PriorityAvatar({ priority }: PriorityAvatarProps) {

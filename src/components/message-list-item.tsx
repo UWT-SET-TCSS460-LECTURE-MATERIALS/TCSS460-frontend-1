@@ -1,7 +1,7 @@
 import DeleteIcon from '@mui/icons-material/Delete';
 import { IconButton, ListItem, ListItemAvatar, ListItemText } from '@mui/material';
 
-import { Message } from '@/types/message.types';
+import type { Message } from '@/types/message';
 import PriorityAvatar from '@/components/priority-avatar';
 
 /**
@@ -34,7 +34,7 @@ interface MessageListItemProps {
  * @example
  * ```tsx
  * <MessageListItem
- *   message={{ priority: Priority.HIGH, name: "John", message: "Hello!" }}
+ *   message={{ priority: PRIORITY.HIGH, name: "John", message: "Hello!" }}
  *   onDelete={(name) => console.log(`Deleting ${name}`)}
  * />
  * ```
