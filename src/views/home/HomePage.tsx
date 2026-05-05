@@ -5,7 +5,7 @@ import { APP_CONFIG } from '@/config';
 
 import MemoryIcon from '@mui/icons-material/Memory';
 import EmailIcon from '@mui/icons-material/Email';
-import Logo from '@/components/logo';
+import Logo from '@/components/Logo';
 
 export default function HomePage() {
   return (

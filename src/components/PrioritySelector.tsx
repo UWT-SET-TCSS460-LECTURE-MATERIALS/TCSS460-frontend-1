@@ -2,7 +2,7 @@ import type { MouseEvent } from 'react';
 import { Stack, ToggleButton, ToggleButtonGroup } from '@mui/material';
 
 import { PRIORITY_LEVELS, type Priority } from '@/types/priority';
-import PriorityAvatar from './priority-avatar';
+import PriorityAvatar from './PriorityAvatar';
 
 /**
  * Props for the PrioritySelector component

@@ -67,23 +67,23 @@ TCSS460-frontend-1/
     ├── main.tsx                # createRoot — imports @fontsource/inter
     ├── App.tsx                 # ThemeProvider + BrowserRouter + Routes
     ├── components/             # Reusable presentational components
-    │   ├── demo-shell.tsx      # AppBar wrapper; wraps /state and /messages/* via <Outlet/>
-    │   ├── logo.tsx            # SVG with 4 variants (full/small/icon/monochrome)
-    │   ├── message-list-item.tsx
-    │   ├── priority-avatar.tsx # Exhaustive switch over the Priority union
-    │   └── priority-selector.tsx
+    │   ├── DemoShell.tsx       # AppBar wrapper; wraps /state and /messages/* via <Outlet/>
+    │   ├── Logo.tsx            # SVG with 4 variants (full/small/icon/monochrome)
+    │   ├── MessageListItem.tsx
+    │   ├── PriorityAvatar.tsx  # Exhaustive switch over the Priority union
+    │   └── PrioritySelector.tsx
     ├── views/                  # Page components (one per route)
-    │   ├── home/home-page.tsx
+    │   ├── home/HomePage.tsx
     │   ├── state/
-    │   │   ├── state.tsx               # ← live route; copy of .state.incorrect.tsx (intentional warnings)
-    │   │   ├── .state.incorrect.tsx    # ← canonical "wrong way" reference (let c, forceUpdate hack)
-    │   │   └── .state.correct.tsx      # ← canonical "right way" reference (useState)
+    │   │   ├── State.tsx               # ← live route; copy of .State.incorrect.tsx (intentional warnings)
+    │   │   ├── .State.incorrect.tsx    # ← canonical "wrong way" reference (let c, forceUpdate hack)
+    │   │   └── .State.correct.tsx      # ← canonical "right way" reference (useState)
     │   ├── messages/
-    │   │   ├── message-list.tsx
-    │   │   ├── message-send.tsx        # ← INTENTIONALLY EMPTY (placeholder for forms lecture)
+    │   │   ├── MessageList.tsx
+    │   │   ├── MessageSend.tsx         # ← INTENTIONALLY EMPTY (placeholder for forms lecture)
     │   │   └── mock-data.ts            # Seeded mock messages (colocated; goes away once frontend-2 hits the real API)
-    │   ├── coming-soon.tsx     # Placeholder used for /messages/send
-    │   └── not-found.tsx       # 404 catch-all
+    │   ├── ComingSoon.tsx      # Placeholder used for /messages/send
+    │   └── NotFound.tsx        # 404 catch-all
     ├── theme/index.ts          # MUI createTheme — single source of truth for colors/typography
     ├── types/                  # Message; Priority union + PRIORITY const + PRIORITY_LEVELS
     └── config/index.ts         # APP_CONFIG (course info, route paths)
@@ -113,7 +113,7 @@ These match the rest of the Forge ecosystem unless noted.
 
 - **Spell out `request`/`response`/`next`** in any backend-style code that lands here later (consistent with backend repos). N/A so far in this repo.
 - **Named exports** preferred. The current views use `export default function` because that's what the source repo did and it reads cleanly for one-component-per-file view files; new utilities should use named exports.
-- **camelCase** variables, **PascalCase** components, **kebab-case** filenames.
+- **camelCase** variables; **PascalCase** for component names AND their filenames (`MessageList.tsx` exports `MessageList`); **kebab-case** for folders and non-component files (e.g. `mock-data.ts`, `vite-env.d.ts`, `types/`).
 - **`@/*` import alias** maps to `src/*` (configured in both `tsconfig.app.json` and `vite.config.ts` — keep them in sync).
 - **MUI styling:** prefer the `sx` prop. Theme tokens (`primary.dark`, `secondary.main`, `text.secondary`) over raw hex strings.
 - **No `"use client"`** directives — this is Vite, not Next.
@@ -145,12 +145,12 @@ CI (`.github/workflows/ci.yml`) runs `format:check → lint → typecheck → bu
 
 Two lint/TS warnings are expected and should not be "fixed":
 
-1. `src/views/state/state.tsx` — unused `forceUpdate` from `useReducer` (kept to demo the forceUpdate hack students might reach for; calling it would still not fix `let c = 0` resetting on re-render).
-2. `src/views/state/state.tsx` — unused `e` parameter in `handelIncrement` (commented-out `console.dir(e)` for lecture).
+1. `src/views/state/State.tsx` — unused `forceUpdate` from `useReducer` (kept to demo the forceUpdate hack students might reach for; calling it would still not fix `let c = 0` resetting on re-render).
+2. `src/views/state/State.tsx` — unused `e` parameter in `handelIncrement` (commented-out `console.dir(e)` for lecture).
 
-Note on dotfile inclusion: `tsconfig.app.json`'s `include` explicitly lists `src/views/state/.state.correct.tsx` so the canonical "right way" reference gets typechecked alongside the rest of `src`. `.state.incorrect.tsx` is intentionally **not** included — its diagnostics already surface via `state.tsx`, which is its byte-identical copy. ESLint also ignores `**/.*.tsx` (see `eslint.config.mjs`), so neither dotfile shows up in lint output.
+Note on dotfile inclusion: `tsconfig.app.json`'s `include` explicitly lists `src/views/state/.State.correct.tsx` so the canonical "right way" reference gets typechecked alongside the rest of `src`. `.State.incorrect.tsx` is intentionally **not** included — its diagnostics already surface via `State.tsx`, which is its byte-identical copy. ESLint also ignores `**/.*.tsx` (see `eslint.config.mjs`), so neither dotfile shows up in lint output.
 
-Plus one deliberately empty file: `src/views/messages/message-send.tsx` — slot for the upcoming controlled-form lecture.
+Plus one deliberately empty file: `src/views/messages/MessageSend.tsx` — slot for the upcoming controlled-form lecture.
 
 ---
 
@@ -168,7 +168,6 @@ Plus one deliberately empty file: `src/views/messages/message-send.tsx` — slot
 
 These were deferred from the initial port and are tracked for follow-up (likely via the parent Forge project):
 
-- Filling in `src/views/messages/message-send.tsx` (controlled-form lecture).
-- Wiring a GitHub remote and pushing.
+- Filling in `src/views/messages/MessageSend.tsx` (controlled-form lecture).
 - Adding a Vitest + React Testing Library smoke test for at least one route.
 - Documenting this repo in `../TCSS460-26SP-FORGE/.claude/docs/repo-context.md` repo inventory.

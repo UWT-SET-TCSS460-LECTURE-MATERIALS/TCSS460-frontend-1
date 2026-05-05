@@ -6,7 +6,7 @@ import MemoryIcon from '@mui/icons-material/Memory';
 
 import { Link, Outlet } from 'react-router-dom';
 
-import Logo from '@/components/logo';
+import Logo from '@/components/Logo';
 import { APP_CONFIG } from '@/config';
 
 export default function DemoShell() {

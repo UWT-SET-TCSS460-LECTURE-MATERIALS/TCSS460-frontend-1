@@ -2,7 +2,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { IconButton, ListItem, ListItemAvatar, ListItemText } from '@mui/material';
 
 import type { Message } from '@/types/message';
-import PriorityAvatar from '@/components/priority-avatar';
+import PriorityAvatar from '@/components/PriorityAvatar';
 
 /**
  * Props for the MessageListItem component

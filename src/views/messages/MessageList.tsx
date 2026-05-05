@@ -7,8 +7,8 @@ import Container from '@mui/material/Container';
 import { Divider, List } from '@mui/material';
 import type { Priority } from '@/types/priority';
 import { MOCK_MESSAGES } from './mock-data';
-import PrioritySelector from '@/components/priority-selector';
-import MessageListItem from '@/components/message-list-item';
+import PrioritySelector from '@/components/PrioritySelector';
+import MessageListItem from '@/components/MessageListItem';
 
 export default function MessageList() {
   const [messages, setMessages] = useState(MOCK_MESSAGES);

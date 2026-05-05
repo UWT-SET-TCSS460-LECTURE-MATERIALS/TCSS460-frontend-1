@@ -20,5 +20,5 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src", "src/views/state/.state.correct.tsx"]
+  "include": ["src", "src/views/state/.State.correct.tsx"]
 }

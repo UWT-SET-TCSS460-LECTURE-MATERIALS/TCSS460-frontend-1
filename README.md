@@ -49,20 +49,20 @@ src/
 ├── main.tsx                 # Vite entry — mounts <App/>, loads Inter font CSS
 ├── App.tsx                  # ThemeProvider + BrowserRouter + route table
 ├── components/              # Reusable presentational components
-│   ├── demo-shell.tsx       # AppBar wrapper — wraps /state and /messages/* routes
-│   ├── logo.tsx             # SVG logo with 4 variants
-│   ├── message-list-item.tsx
-│   ├── priority-avatar.tsx
-│   └── priority-selector.tsx
+│   ├── DemoShell.tsx        # AppBar wrapper — wraps /state and /messages/* routes
+│   ├── Logo.tsx             # SVG logo with 4 variants
+│   ├── MessageListItem.tsx
+│   ├── PriorityAvatar.tsx
+│   └── PrioritySelector.tsx
 ├── views/                   # Page-level components (one per route)
-│   ├── home/home-page.tsx
-│   ├── state/state.tsx
+│   ├── home/HomePage.tsx
+│   ├── state/State.tsx
 │   ├── messages/
-│   │   ├── message-list.tsx
-│   │   ├── message-send.tsx
+│   │   ├── MessageList.tsx
+│   │   ├── MessageSend.tsx
 │   │   └── mock-data.ts     # Seeded mock messages (colocated)
-│   ├── coming-soon.tsx      # Placeholder used for /messages/send
-│   └── not-found.tsx        # 404 catch-all
+│   ├── ComingSoon.tsx       # Placeholder used for /messages/send
+│   └── NotFound.tsx         # 404 catch-all
 ├── theme/index.ts           # MUI theme — single source of truth
 ├── types/                   # TypeScript types (Message, Priority)
 └── config/index.ts          # APP_CONFIG (course info, routes)
@@ -84,7 +84,7 @@ Routes under `DemoShell` share an AppBar via React Router's nested-route + `<Out
 
 ### State Management (`/state`)
 
-A simple counter card. **Note**: `state.tsx` is intentionally a copy of `.state.incorrect.tsx` — it actively uses the wrong patterns (`let c = 0`, `useReducer`-as-forceUpdate) so lecture can demonstrate why they fail. The corrected version using `useState` lives alongside in `.state.correct.tsx`.
+A simple counter card. **Note**: `State.tsx` is intentionally a copy of `.State.incorrect.tsx` — it actively uses the wrong patterns (`let c = 0`, `useReducer`-as-forceUpdate) so lecture can demonstrate why they fail. The corrected version using `useState` lives alongside in `.State.correct.tsx`.
 
 ### Messages (`/messages/view`)
 
